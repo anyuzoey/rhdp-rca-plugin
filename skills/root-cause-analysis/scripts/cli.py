@@ -13,16 +13,16 @@ if __name__ == "__main__" and __package__ is None:
     sys.path.insert(0, str(Path(__file__).parent.parent))
     from scripts.config import Config
     from scripts.correlator import build_correlation_timeline, fetch_correlated_logs
+    from scripts.github_fetcher import GitHubAnalyzer, GitHubClient
     from scripts.job_parser import parse_job_log
     from scripts.log_fetcher import fetch_job_log
-    from scripts.github_fetcher import GitHubClient, GitHubAnalyzer
 else:
     # Running as module (-m scripts.cli)
     from .config import Config
     from .correlator import build_correlation_timeline, fetch_correlated_logs
+    from .github_fetcher import GitHubAnalyzer, GitHubClient
     from .job_parser import parse_job_log
     from .log_fetcher import fetch_job_log
-    from .github_fetcher import GitHubClient, GitHubAnalyzer
 
 
 def get_analysis_dir(config: Config, job_id: str) -> Path:
