@@ -411,7 +411,7 @@ class GitHubAnalyzer:
         return result
 
 
-def main():
+def main() -> None:
     parser = argparse.ArgumentParser(
         description="Fetch all relevant GitHub configuration and workload files"
     )
