@@ -20,6 +20,8 @@ from typing import Any
 
 import requests
 
+from .tracing import SpanType, trace
+
 
 def create_error_result(path: str, status: str = "404") -> dict[str, Any]:
     """Create standardized error result dictionary."""
@@ -346,6 +348,7 @@ class GitHubAnalyzer:
 
         return fetched_workload
 
+    @trace(name="Run Step 4 analysis", span_type=SpanType.CHAIN if SpanType else None)
     def run(self) -> dict:
         """Execute GitHub file fetching - fetch all GitHub files"""
         print(f"[INFO] Starting GitHub file fetch for job {self.job_id}...")
